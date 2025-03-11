@@ -1,6 +1,9 @@
 #!/bin/bash
 
 echo "Installing AWS CLI"
+curl "https://awscli.amazonaws.com/awscli-exe-linuz-x86.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
 
 echo "Installing kubectl"
 curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.26.2/2023-03-17/bin/linux/amd64/kubectl
@@ -29,6 +32,8 @@ sudo systemctl start docker.service
 
 
 echo "Installing Helm"
+curl "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3" | bash
+helm version
 
 echo "Installing terraform "
 sudo yum install -y yum-utils

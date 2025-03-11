@@ -21,23 +21,10 @@ echo 'export PATH=$PATH:/usr/local/bin' >> ~/.bashrc
 eksctl version
 
 echo "Installing docker"
-sudo yum install -y docker
-sudo usermod -a -G docker ec2-user
-newgrp docker
-wget https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) 
-sudo mv docker-compose-$(uname -s)-$(uname -m) /usr/local/bin/docker-compose
-sudo chmod -v +x /usr/local/bin/docker-compose
-sudo systemctl enable docker.service
-sudo systemctl start docker.service
-
+sudo apt install -y docker.io
+sudo systemctl enable docker
+sudo systemctl start docker
 
 echo "Installing Helm"
 curl "https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3" | bash
 helm version
-
-echo "Installing terraform "
-sudo yum install -y yum-utils
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-sudo yum install -y terraform
-
-

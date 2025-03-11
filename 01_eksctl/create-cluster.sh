@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Variables
-CLUSTER_NAME=mundoes-cluster-G6
+CLUSTER_NAME=eks-grupo11
 AWS_REGION=us-east-2
 
-# Set AWS credentials 
+# Set AWS credenciales 
 aws sts get-caller-identity >> /dev/null
 if [ $? -eq 0 ]
 then
@@ -18,7 +18,7 @@ then
   --node-type t2.small \
   --with-oidc \
   --ssh-access \
-  --ssh-public-key jenkins \
+  --ssh-public-key infra \
   --managed \
   --full-ecr-access \
   --zones us-east-2a,us-east-2b,us-east-2c
